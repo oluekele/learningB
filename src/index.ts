@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 6500;
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World!');
+  res.send('Hello, Ekele! Welcome to your Express server with TypeScript and Prisma!');
 });
 
 app.listen(PORT, () => {
