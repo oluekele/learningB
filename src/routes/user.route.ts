@@ -3,8 +3,8 @@ import { getAllUsers, getUserById, updateUser } from '../controllers/userControl
 
 const routes = express.Router();
 
-routes.get('/users', getAllUsers);
-routes.get('/users/:id', getUserById);
-routes.put('/users/:id', updateUser);
+routes.get('/', getAllUsers);
+routes.get('/:id', getUserById);
+routes.put('/update/:id', updateUser);
 
 export default routes;

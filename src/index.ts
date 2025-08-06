@@ -11,14 +11,14 @@ app.use(cors({ origin: '*' }));
 
 const middleware = (req: Request, res: Response, next: Function) => {
   console.log(`${req.method} request for '${req.url}'`);
-  next(); // Important!
+  next(); 
 };
 
 app.use(middleware);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Correctly register product routes
+
 app.use('/api/v1/product', productRoutes);
 app.use('/api/v1/auth', AuthRoutes);
 app.use('/api/v1/user', UserRoutes);
