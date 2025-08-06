@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import prisma from '../config/db.js';
+import { prisma } from '../config/db.js';
 
 //POST /auth/login
 export const loginUser = async (req: Request, res: Response) => {

@@ -1,6 +1,6 @@
 
 import { Request, Response } from 'express';
-import prisma from '../config/db.js';
+import { prisma } from '../config/db.js';
 
 // GET /products
 export const getAllProducts = async (req: Request, res: Response) => {
