@@ -19,6 +19,7 @@ app.use('/api/v1/user', UserRoutes);
 app.get('/', (req, res) => {
     res.send('Hello, Ekele! Welcome to your Express server with TypeScript and Prisma!');
 });
+console.log('DATABASE_URL: ', process.env.DATABASE_URL || process.env.DATABASE_URL1);
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
