@@ -31,6 +31,11 @@ app.get('/', (req: Request, res: Response) => {
 
 // Swagger documentation setup
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Serve swagger.json (raw spec)
+app.get('/swagger.json', (_req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
 
 app.get('/api-docs', (_req, res) => {
   res.send(`
@@ -56,11 +61,6 @@ app.get('/api-docs', (_req, res) => {
   `);
 });
 
-// Serve swagger.json (raw spec)
-app.get('/swagger.json', (_req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.send(swaggerSpec);
-});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
