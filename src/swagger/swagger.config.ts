@@ -11,7 +11,7 @@ const options: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url:  process.env.BASE_URL || 'http://localhost:6500',
+        url:  process.env.BASE_URL || 'https://learning-b-pi.vercel.app' || 'http://localhost:6500',
       },
     ],
   },
