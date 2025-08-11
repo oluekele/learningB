@@ -1,7 +1,6 @@
-// src/swagger/swagger.config.ts
 import swaggerJSDoc from 'swagger-jsdoc';
 
-const options: swaggerJSDoc.Options = {
+const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
@@ -11,14 +10,16 @@ const options: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        // url: 'http://localhost:6500' ,
-        url: `${process.env.BASE_URL }`,
+        url: process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}`
+          : `http://localhost:${process.env.PORT || 6500}`,
       },
     ],
   },
-  apis: ['./src/routes/*.ts'], // Swagger comments live here
+  apis: [
+    './src/routes/*.ts', // local dev
+    './dist/routes/*.js', // deployed build on Vercel
+  ],
 };
 
-const swaggerSpec = swaggerJSDoc(options);
-
-export default swaggerSpec;
+export default swaggerJSDoc(swaggerOptions);
