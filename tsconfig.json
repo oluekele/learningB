@@ -9,7 +9,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node", 
+    "removeComments": false
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
