@@ -38,7 +38,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 
 const port = process.env.PORT || 6500;
 const serverUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+  ? `${process.env.VERCEL_URL}` 
   : `http://localhost:${port}`;
 
 const swaggerOptions = {
