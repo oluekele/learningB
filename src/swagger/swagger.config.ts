@@ -1,5 +1,12 @@
 import swaggerJSDoc from 'swagger-jsdoc';
 
+const port = process.env.PORT || 6500;
+
+// Build the server URL for Swagger
+const serverUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}` // Vercel production/staging
+  : `http://localhost:${port}`;         // Local dev
+
 const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
@@ -10,16 +17,16 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: process.env.VERCEL_URL
-          ? `https://${process.env.VERCEL_URL}`
-          : `http://localhost:${process.env.PORT || 6500}`,
+        url: serverUrl,
+        description: process.env.VERCEL_URL ? 'Vercel server' : 'Local server',
       },
     ],
   },
   apis: [
-    './src/routes/*.ts', // local dev
-    './dist/routes/*.js', // deployed build on Vercel
+    './src/routes/*.ts',  // Local development files
+    './dist/routes/*.js', // Compiled files in Vercel
   ],
 };
+
 
 export default swaggerJSDoc(swaggerOptions);
