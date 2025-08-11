@@ -36,9 +36,10 @@
 import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
 
-const port = process.env.PORT || 6500;
-const serverUrl = process.env.VERCEL_URL
-  ? `${process.env.VERCEL_URL}` 
+const vercelUrl = "https://learning-b-pi.vercel.app"
+const port = process.env.PORT;
+const serverUrl = vercelUrl
+  ? `${vercelUrl}` 
   : `http://localhost:${port}`;
 
 const swaggerOptions = {
@@ -52,7 +53,7 @@ const swaggerOptions = {
     servers: [
       {
         url: serverUrl,
-        description: process.env.VERCEL_URL ? 'Vercel server' : 'Local server',
+        description: vercelUrl ? 'Vercel server' : 'Local server',
       },
     ],
   },
