@@ -1,5 +1,6 @@
 import express from "express";
-import { forgetPassword, loginUser, registerUser } from "../controllers/authController.js";
+import { forgetPassword, loginUser,  logoutUser,  registerUser } from "../controllers/authController.js";
+import { authenticate } from "../middleware/auth.js";
 
 const routes = express.Router();
 
@@ -80,5 +81,19 @@ routes.post("/register", registerUser);
  *         description: Reset link sent
  */
 routes.post("/forget-password", forgetPassword);
+
+// POST /auth/logout
+/**
+ * @openapi
+ * /api/v1/auth/logout:
+ *   post:
+ *     summary: Logout user
+ *     tags:
+ *       - Auth
+ *     responses:
+ *       200:
+ *         description: Logout successful
+ */
+routes.post("/logout", logoutUser);
 
 export default routes;
