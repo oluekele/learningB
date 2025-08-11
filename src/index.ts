@@ -33,11 +33,13 @@ app.get('/swagger.json', (_, res) => {
 // Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-export default app; // Required for Vercel
 
-if (process.env.NODE_ENV !== 'production') {
+
   app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
     console.log(`Docs: http://localhost:${PORT}/api-docs`);
   });
-}
+
+
+
+export default app; // Required for Vercel
