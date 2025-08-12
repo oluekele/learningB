@@ -31,9 +31,6 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Swagger documentation setup
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-// Serve swagger.json (raw spec)
-// Swagger JSON
 app.get('/swagger.json', (_, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
@@ -45,7 +42,7 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec, {
     swaggerOptions: {
-      url: '/swagger.json', // explicitly tell Swagger UI where to get the spec
+      url: '/swagger.json', 
     },
   })
 );
