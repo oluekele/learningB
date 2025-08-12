@@ -31,21 +31,16 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Swagger documentation setup
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Serve swagger.json (raw spec)
+// Swagger JSON
 app.get('/swagger.json', (_, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
 });
 
 // Swagger UI
-app.use(
-  '/api-docs',
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, {
-    swaggerOptions: {
-      url: '/swagger.json', 
-    },
-  })
-);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 export default app; // Required for Vercel
