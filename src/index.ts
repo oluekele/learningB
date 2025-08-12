@@ -40,7 +40,15 @@ app.get('/swagger.json', (_, res) => {
 });
 
 // Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    swaggerOptions: {
+      url: '/swagger.json', // explicitly tell Swagger UI where to get the spec
+    },
+  })
+);
 
 
 export default app; // Required for Vercel
