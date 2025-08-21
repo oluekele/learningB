@@ -16,6 +16,9 @@ const options = {
             {
                 url: 'http://localhost:6500',
             },
+            {
+                url: 'https://learningb-jteb.onrender.com'
+            },
         ],
     },
     apis: [
