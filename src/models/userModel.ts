@@ -11,6 +11,7 @@ export const register = async (data: {
   name: string;
   email: string;
   password: string;
+  refreshToken?: string;
 }) => {
   return await prisma.user.create({ data });
 };

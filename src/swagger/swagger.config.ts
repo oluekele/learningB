@@ -1,5 +1,10 @@
-// src/swagger/swagger.config.ts
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import swaggerJSDoc from 'swagger-jsdoc';
+
+// Fix for __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const options: swaggerJSDoc.Options = {
   definition: {
@@ -11,13 +16,15 @@ const options: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url:  process.env.BASE_URL || 'https://learning-b-pi.vercel.app' || 'http://localhost:6500',
+        url: 'http://localhost:6500',
       },
     ],
   },
-  apis: ['./src/routes/*.ts'], // Swagger comments live here
+  apis: [
+    path.join(__dirname, '../routes/*.ts'),
+    path.join(__dirname, '../routes/*.js'),
+  ],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
-
 export default swaggerSpec;
